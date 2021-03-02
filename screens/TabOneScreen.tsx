@@ -1,9 +1,10 @@
 import * as React from 'react';
-import { StyleSheet, FlatList } from 'react-native';
+import { StyleSheet, FlatList,Image } from 'react-native';
 import Pagination, { Icon, Dot } from 'react-native-pagination';
 import { ExpandingDot } from "react-native-animated-pagination-dots";
 import _ from 'lodash';
-import chunk from 'lodash';
+import { createStore } from 'redux'
+
 
   
 import EditScreenInfo from '../components/EditScreenInfo';
@@ -12,12 +13,11 @@ import { Text, View } from '../components/Themed';
 
 
 export default function TabOneScreen() {
-
-
     let MockPersonList = new _.times(4, (i) => {
         return {
             id: i,
             index: i,
+            url:"https://via.placeholder.com/150/771796"
          
         }
     })
@@ -26,7 +26,7 @@ export default function TabOneScreen() {
 
   return (
     <View style={styles.container}>
-          <Text style={styles.title}>Tab One8</Text>
+          <Text style={styles.title}>Tab One10</Text>
           <Text style={styles.title}>Tab One216</Text>
       
           <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
@@ -36,11 +36,24 @@ export default function TabOneScreen() {
               numColumns={2}
               renderItem={({ item }) =>
               
-                  <Text style={{margin:50}}>Antto</Text>
+
+                  <Image
+                      source={{
+                          uri: 'https://via.placeholder.com/150/771796',
+                          method: 'POST',
+                          headers: {
+                              Pragma: 'no-cache'
+                          },
+                          body: 'Your Body goes here'
+                      }}
+                      style={{ width: 60, height: 60, margin :'10%' }}
+
+
+      />
           
           
               }
-              keyExtractor={item => item.email}
+       
           />
 
       
