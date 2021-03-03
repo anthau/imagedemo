@@ -11,12 +11,20 @@ import EditScreenInfo from '../components/EditScreenInfo';
 import { Text, View } from '../components/Themed';
 
 
+const chunk = require('chunk')
+
+const axios = require('axios');
 
 export default function TabOneScreen() {
-    function count(state = 0, action) {
+    axios.get('https://jsonplaceholder.typicode.com/photos')
+        .then(function (response) {
+            // handle success
+            
+        })
+    const count=(state = 0, action)=> {
         return action.type + 'www.tappara.fi';
     }
-
+  
     let store = createStore(count);
     store.dispatch({ type: 'increase' })
     alert(store.getState())
@@ -31,10 +39,11 @@ export default function TabOneScreen() {
         }
     })
 
-    var chunk = require('chunk')
+
 
   return (
-    <View style={styles.container}>
+      <View style={styles.container}>
+
           <Text style={styles.title}>Image Browser2</Text>
           <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
           <FlatList
@@ -43,7 +52,6 @@ export default function TabOneScreen() {
               showsVerticalScrollIndicator={false}
               numColumns={2}
               renderItem={({ item }) =>
-
                   <TouchableOpacity onPress={() => { alert('moi') }}>
                   <Image
                       source={{
@@ -57,14 +65,8 @@ export default function TabOneScreen() {
                           style={{ width: 60, height: 60, margin: '10%' }}
                       />
                       </TouchableOpacity>
-                   
-          
-          
               }
-       
           />
-
-      
     </View>
   );
 }
