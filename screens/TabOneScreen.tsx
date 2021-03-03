@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { StyleSheet, FlatList,Image } from 'react-native';
+import { StyleSheet, FlatList, Image, TouchableOpacity } from 'react-native';
 import Pagination, { Icon, Dot } from 'react-native-pagination';
 import { ExpandingDot } from "react-native-animated-pagination-dots";
 import _ from 'lodash';
@@ -14,6 +14,7 @@ import { Text, View } from '../components/Themed';
 
 export default function TabOneScreen() {
     let MockPersonList = new _.times(4, (i) => {
+
         return {
             id: i,
             index: i,
@@ -26,30 +27,27 @@ export default function TabOneScreen() {
 
   return (
     <View style={styles.container}>
-          <Text style={styles.title}>Tab One10</Text>
-          <Text style={styles.title}>Tab One216</Text>
-      
+          <Text style={styles.title}>Image Browser2</Text>
           <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
           <FlatList
-              data={MockPersonList}
+              data={chunk(MockPersonList,2)[0]}
               showsVerticalScrollIndicator={false}
               numColumns={2}
               renderItem={({ item }) =>
-              
-
+                  <TouchableOpacity onPress={() => { alert('moi') }}>
                   <Image
                       source={{
-                          uri: 'https://via.placeholder.com/150/771796',
+                          uri: item.url,
                           method: 'POST',
                           headers: {
                               Pragma: 'no-cache'
                           },
-                          body: 'Your Body goes here'
+                          body: 'image'
                       }}
-                      style={{ width: 60, height: 60, margin :'10%' }}
-
-
-      />
+                          style={{ width: 60, height: 60, margin: '10%' }}
+                      />
+                      </TouchableOpacity>
+                   
           
           
               }
