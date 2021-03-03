@@ -13,6 +13,14 @@ import { Text, View } from '../components/Themed';
 
 
 export default function TabOneScreen() {
+    function count(state = 0, action) {
+        return action.type + 'www.tappara.fi';
+    }
+
+    let store = createStore(count);
+    store.dispatch({ type: 'increase' })
+    alert(store.getState())
+
     let MockPersonList = new _.times(4, (i) => {
 
         return {
@@ -30,10 +38,12 @@ export default function TabOneScreen() {
           <Text style={styles.title}>Image Browser2</Text>
           <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
           <FlatList
+
               data={chunk(MockPersonList,2)[0]}
               showsVerticalScrollIndicator={false}
               numColumns={2}
               renderItem={({ item }) =>
+
                   <TouchableOpacity onPress={() => { alert('moi') }}>
                   <Image
                       source={{
