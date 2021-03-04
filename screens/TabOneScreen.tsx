@@ -4,13 +4,16 @@ import Pagination, { Icon, Dot } from 'react-native-pagination';
 import { ExpandingDot } from "react-native-animated-pagination-dots";
 import _ from 'lodash';
 import { createStore } from 'redux'
+import { TabTwoNavigator } from '../navigation/BottomTabNavigator'
+import { createStackNavigator } from '@react-navigation/stack';
+import { BottomTabParamList, TabOneParamList, TabTwoParamList } from '../types';
 
 
   
 import EditScreenInfo from '../components/EditScreenInfo';
 import { Text, View } from '../components/Themed';
 
-
+const TabTwoStack = createStackNavigator<TabTwoParamList>();
 const chunk = require('chunk')
 
 const axios = require('axios');
@@ -18,7 +21,7 @@ const axios = require('axios');
 export default function TabOneScreen() {
     axios.get('https://jsonplaceholder.typicode.com/photos')
         .then(function (response) {
-            // handle success
+
             
         })
     const count=(state = 0, action)=> {
@@ -27,8 +30,6 @@ export default function TabOneScreen() {
   
     let store = createStore(count);
     store.dispatch({ type: 'increase' })
-    alert(store.getState())
-
     let MockPersonList = new _.times(4, (i) => {
 
         return {
@@ -43,16 +44,14 @@ export default function TabOneScreen() {
 
   return (
       <View style={styles.container}>
-
           <Text style={styles.title}>Image Browser2</Text>
           <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
           <FlatList
-
               data={chunk(MockPersonList,2)[0]}
               showsVerticalScrollIndicator={false}
               numColumns={2}
               renderItem={({ item }) =>
-                  <TouchableOpacity onPress={() => { alert('moi') }}>
+                  <TouchableOpacity onPress={() => { TabTwoNavigator() }}>
                   <Image
                       source={{
                           uri: item.url,

@@ -1,17 +1,31 @@
 import * as React from 'react';
-import { StyleSheet, FlatList } from 'react-native';
+import { StyleSheet, Button,FlatList } from 'react-native';
 
 import EditScreenInfo from '../components/EditScreenInfo';
-import { Text, View} from '../components/Themed';
+import { Text, View } from '../components/Themed';
 
-export default function TabTwoScreen() {
-  return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Tab Two63</Text>
-      <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
-      <EditScreenInfo path="/screens/TabTwoScreen.tsx" />
-    </View>
-  );
+
+
+
+
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+const Tab = createBottomTabNavigator();
+
+export default function TabTwoScreen(props) {
+
+ 
+    return (
+        <View style={styles.container}>
+            <Text style={styles.title}>Tab Two63</Text>
+            <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
+            <Button
+                title="Go to Details"
+                onPress={() => props.navigation.navigate('TabOneScreen')}
+            />
+            
+            <EditScreenInfo path="/screens/TabTwoScreen.tsx" />
+        </View>
+    );
 }
 
 const styles = StyleSheet.create({

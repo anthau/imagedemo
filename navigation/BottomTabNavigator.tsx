@@ -24,14 +24,25 @@ export default function BottomTabNavigator() {
         options={{
           tabBarIcon: ({ color }) => <TabBarIcon name="ios-code" color={color} />,
         }}
-      />
+          
+          >
+    
+          </BottomTab.Screen>
       <BottomTab.Screen
         name="TabTwo"
         component={TabTwoNavigator}
         options={{
           tabBarIcon: ({ color }) => <TabBarIcon name="ios-code" color={color} />,
         }}
-      />
+          />
+          <BottomTab.Screen
+              name="TabTwo3"
+              component={TabTwoNavigator}
+              options={{
+                  tabBarIcon: ({ color }) => <TabBarIcon name="ios-code" color={color} />,
+              }}
+          />
+
     </BottomTab.Navigator>
   );
 }
@@ -44,9 +55,10 @@ function TabBarIcon(props: { name: React.ComponentProps<typeof Ionicons>['name']
 
 // Each tab has its own navigation stack, you can read more about this pattern here:
 // https://reactnavigation.org/docs/tab-based-navigation#a-stack-navigator-for-each-tab
-const TabOneStack = createStackNavigator<TabOneParamList>();
 
-function TabOneNavigator() {
+const TabOneStack = createStackNavigator<TabOneParamList>();
+export function TabOneNavigator() {
+  
   return (
     <TabOneStack.Navigator>
       <TabOneStack.Screen
@@ -58,16 +70,21 @@ function TabOneNavigator() {
   );
 }
 
-const TabTwoStack = createStackNavigator<TabTwoParamList>();
 
-function TabTwoNavigator() {
-  return (
+const TabTwoStack = createStackNavigator<TabTwoParamList>();
+export function TabTwoNavigator() {
+ 
+    alert('moi65')
+    return (
+        <>
+       
     <TabTwoStack.Navigator>
       <TabTwoStack.Screen
         name="TabTwoScreen"
         component={TabTwoScreen}
         options={{ headerTitle: 'Tab Two Title' }}
       />
-    </TabTwoStack.Navigator>
+            </TabTwoStack.Navigator>
+            </>
   );
 }
