@@ -20,7 +20,7 @@ export default function TabTwoScreen(props) {
             <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
             <Button
                 title="Go to Details"
-                onPress={() => props.navigation.navigate('TabOneScreen')}
+                onPress={() => props.navigation.navigate('TabOne')}
             />
             
             <EditScreenInfo path="/screens/TabTwoScreen.tsx" />

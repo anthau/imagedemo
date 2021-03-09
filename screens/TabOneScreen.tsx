@@ -1,4 +1,5 @@
 import * as React from 'react';
+import  { useState, useContext, useEffect } from 'react';
 import { StyleSheet, FlatList, Image, TouchableOpacity } from 'react-native';
 import Pagination, { Icon, Dot } from 'react-native-pagination';
 import { ExpandingDot } from "react-native-animated-pagination-dots";
@@ -9,6 +10,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { BottomTabParamList, TabOneParamList, TabTwoParamList } from '../types';
 
 
+
   
 import EditScreenInfo from '../components/EditScreenInfo';
 import { Text, View } from '../components/Themed';
@@ -17,21 +19,28 @@ const TabTwoStack = createStackNavigator<TabTwoParamList>();
 const chunk = require('chunk')
 
 const axios = require('axios');
+const sfetch = require('sync-fetch')
 
-export default function TabOneScreen() {
-    axios.get('https://jsonplaceholder.typicode.com/photos')
-        .then(function (response) {
+export default  function TabOneScreen(props) {
+    const [data1, setData] = useState({});
+    const count = async (state = 0, action) => {
 
-            
-        })
-    const count=(state = 0, action)=> {
-        return action.type + 'www.tappara.fi';
-    }
+
+         
   
-    let store = createStore(count);
-    store.dispatch({ type: 'increase' })
-    let MockPersonList = new _.times(4, (i) => {
+        return { value: action.type }
+    }  
 
+    let store = createStore(count);
+
+    useEffect(async () => {
+        const result = await axios(
+            'https://jsonplaceholder.typicode.com/photos',
+        );
+        setData(result.data);
+    }, []);
+
+    let MockPersonList = new _.times(4, (i) => {
         return {
             id: i,
             index: i,
@@ -39,19 +48,20 @@ export default function TabOneScreen() {
          
         }
     })
-
-
+    
 
   return (
       <View style={styles.container}>
-          <Text style={styles.title}>Image Browser2</Text>
+          {  alert('Moro=' + JSON.stringify(data1.length))}
+          <Text style={styles.title}>Image5 Browser32</Text>
           <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
+      
           <FlatList
               data={chunk(MockPersonList,2)[0]}
               showsVerticalScrollIndicator={false}
               numColumns={2}
               renderItem={({ item }) =>
-                  <TouchableOpacity onPress={() => { TabTwoNavigator() }}>
+                  <TouchableOpacity onPress={() => { alert('moi2'); alert('moi2'); props.navigation.navigate('TabTwo') }}>
                   <Image
                       source={{
                           uri: item.url,
