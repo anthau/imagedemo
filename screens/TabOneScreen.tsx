@@ -3,15 +3,12 @@ import  { useState, useContext, useEffect } from 'react';
 import { StyleSheet, FlatList, Image, TouchableOpacity } from 'react-native';
 import Pagination, { Icon, Dot } from 'react-native-pagination';
 import { ExpandingDot } from "react-native-animated-pagination-dots";
-import _ from 'lodash';
+
 import { createStore } from 'redux'
 import { TabTwoNavigator } from '../navigation/BottomTabNavigator'
 import { createStackNavigator } from '@react-navigation/stack';
 import { BottomTabParamList, TabOneParamList, TabTwoParamList } from '../types';
 
-
-
-  
 import EditScreenInfo from '../components/EditScreenInfo';
 import { Text, View } from '../components/Themed';
 
@@ -24,10 +21,6 @@ const sfetch = require('sync-fetch')
 export default  function TabOneScreen(props) {
     const [data1, setData] = useState({});
     const count = async (state = 0, action) => {
-
-
-         
-  
         return { value: action.type }
     }  
 
@@ -40,24 +33,16 @@ export default  function TabOneScreen(props) {
         setData(result.data);
     }, []);
 
-    let MockPersonList = new _.times(4, (i) => {
-        return {
-            id: i,
-            index: i,
-            url:"https://via.placeholder.com/150/771796"
-         
-        }
-    })
-    
 
+
+    if (data1.length !== undefined)
   return (
       <View style={styles.container}>
-          {  alert('Moro=' + JSON.stringify(data1.length))}
-          <Text style={styles.title}>Image5 Browser32</Text>
+          <Text style={styles.title}>Image5 Browser</Text>
           <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
       
           <FlatList
-              data={chunk(MockPersonList,2)[0]}
+              data={chunk(data1,4)[0]}
               showsVerticalScrollIndicator={false}
               numColumns={2}
               renderItem={({ item }) =>
@@ -71,13 +56,18 @@ export default  function TabOneScreen(props) {
                           },
                           body: 'image'
                       }}
-                          style={{ width: 60, height: 60, margin: '10%' }}
+                          style={{ width: 60, height: 60, margin: '5em' }}
                       />
                       </TouchableOpacity>
               }
           />
     </View>
-  );
+        );
+    return (
+        <View style={styles.container}>
+            </View>
+        
+        );
 }
 
 const s = StyleSheet.create({
