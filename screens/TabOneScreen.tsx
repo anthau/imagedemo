@@ -20,6 +20,8 @@ const sfetch = require('sync-fetch')
 
 export default  function TabOneScreen(props) {
     const [data1, setData] = useState({});
+
+    const [pagenumber, setpage] = useState(0);
     const count = async (state = 0, action) => {
         return { value: action.type }
     }  
@@ -33,20 +35,31 @@ export default  function TabOneScreen(props) {
         setData(result.data);
     }, []);
 
-
-
     if (data1.length !== undefined)
   return (
       <View style={styles.container}>
-          <Text style={styles.title}>Image5 Browser</Text>
+          <Text style={styles.title}>Image Browser</Text>
           <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
       
           <FlatList
-              data={chunk(data1,4)[0]}
+              data={chunk(data1,4)[3]}
               showsVerticalScrollIndicator={false}
               numColumns={2}
               renderItem={({ item }) =>
-                  <TouchableOpacity onPress={() => { alert('moi2'); alert('moi2'); props.navigation.navigate('TabTwo') }}>
+                  <TouchableOpacity onPress={() => {
+
+                      alert('moi2'); alert('moi2=');
+
+
+                      props.navigation.navigate('TabTwo', {
+
+                          screen: 'TabTwoScreen',
+                          params: { user: 'propertyValue' }
+                      }
+                      );
+                 
+
+                  }}>
                   <Image
                       source={{
                           uri: item.url,
@@ -56,7 +69,7 @@ export default  function TabOneScreen(props) {
                           },
                           body: 'image'
                       }}
-                          style={{ width: 60, height: 60, margin: '5em' }}
+                          style={{ width: 60, height: 60, margin: '3em' }}
                       />
                       </TouchableOpacity>
               }
@@ -64,8 +77,7 @@ export default  function TabOneScreen(props) {
     </View>
         );
     return (
-        <View style={styles.container}>
-            </View>
+        <View style={styles.container}> </View>
         
         );
 }

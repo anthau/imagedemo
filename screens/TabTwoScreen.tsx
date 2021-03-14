@@ -12,15 +12,18 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 const Tab = createBottomTabNavigator();
 
 export default function TabTwoScreen(props) {
-
- 
+    /* 2. Get the param */
+    
+    const { route } = props;
+    alert('tappara4=' + props.route.params.user)
+   
     return (
         <View style={styles.container}>
             <Text style={styles.title}>Tab Two63</Text>
             <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
             <Button
                 title="Go to Details"
-                onPress={() => props.navigation.navigate('TabOne')}
+                onPress={() => alert('moi')}
             />
             
             <EditScreenInfo path="/screens/TabTwoScreen.tsx" />
