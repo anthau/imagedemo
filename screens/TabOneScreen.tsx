@@ -48,13 +48,11 @@ export default  function TabOneScreen(props) {
               renderItem={({ item }) =>
                   <TouchableOpacity onPress={() => {
 
-                      alert('moi2'); alert('moi2=');
-
-
+                
                       props.navigation.navigate('TabTwo', {
 
                           screen: 'TabTwoScreen',
-                          params: { user: 'propertyValue' }
+                          params: { user: item.url}
                       }
                       );
                  

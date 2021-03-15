@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { StyleSheet, Button,FlatList } from 'react-native';
+import { StyleSheet, Button,FlatList,Image } from 'react-native';
 
 import EditScreenInfo from '../components/EditScreenInfo';
 import { Text, View } from '../components/Themed';
@@ -15,15 +15,29 @@ export default function TabTwoScreen(props) {
     /* 2. Get the param */
     
     const { route } = props;
-    alert('tappara4=' + props.route.params.user)
+    const url = props.route.params.user;
+  
    
     return (
         <View style={styles.container}>
             <Text style={styles.title}>Tab Two63</Text>
+
+            <Image
+                source={{
+                    uri: url,
+                    method: 'POST',
+                    headers: {
+                        Pragma: 'no-cache'
+                    },
+                    body: 'image'
+                }}
+                style={{ width: '70%', height: '70%' }}
+            />
+    
             <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
             <Button
                 title="Go to Details"
-                onPress={() => alert('moi')}
+                onPress={() => props.navigation.navigate('TabOne')}
             />
             
             <EditScreenInfo path="/screens/TabTwoScreen.tsx" />

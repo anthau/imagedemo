@@ -74,7 +74,6 @@ export function TabOneNavigator() {
 const TabTwoStack = createStackNavigator<TabTwoParamList>();
 export function TabTwoNavigator() {
 
-    alert('moi65')
     return (
         <>
 
