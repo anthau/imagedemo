@@ -80,7 +80,7 @@ export default function TabOneScreen(props) {
                                     },
                                     body: 'image'
                                 }}
-                                style={{ width: 70, height: 70  }}
+                                style={{ width: 70, height: 70, margin : '5%'  }}
                             />
 
 

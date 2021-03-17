@@ -8,7 +8,7 @@ const Tab = createBottomTabNavigator();
 
 export default function TabTwoScreen(props) {
     const { route } = props;
-    const url = "props.route.params.user";
+    const url = props.route.params.user;
   
     return (
         <View style={styles.container}>
