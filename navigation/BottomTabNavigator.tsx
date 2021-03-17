@@ -22,7 +22,8 @@ export default function BottomTabNavigator() {
                 name="TabOne"
                 component={TabOneNavigator}
                 options={{
-                    tabBarIcon: ({ color }) => <TabBarIcon name="ios-code" color={color} />,
+                    tabBarIcon: ({ color }) => <TabBarIcon name="home-outline" color={color} />,
+                    title: ''
                 }}
 
             >
@@ -32,16 +33,11 @@ export default function BottomTabNavigator() {
                 name="TabTwo"
                 component={TabTwoNavigator}
                 options={{
-                    tabBarIcon: ({ color }) => <TabBarIcon name="ios-code" color={color} />,
+                    tabBarIcon: ({ color }) => <></>,
+                    title:'',
                 }}
             />
-            <BottomTab.Screen
-                name="TabTwo3"
-                component={TabTwoNavigator}
-                options={{
-                    tabBarIcon: ({ color }) => <TabBarIcon name="ios-code" color={color} />,
-                }}
-            />
+            
 
         </BottomTab.Navigator>
     );

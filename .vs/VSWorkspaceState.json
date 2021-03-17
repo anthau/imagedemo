@@ -1,10 +1,9 @@
 {
   "ExpandedNodes": [
     "",
-    "\\components",
     "\\navigation",
     "\\screens"
   ],
-  "SelectedNode": "\\screens\\TabTwoScreen.tsx",
+  "SelectedNode": "\\screens\\TabOneScreen.tsx",
   "PreviewInSolutionExplorer": false
 }

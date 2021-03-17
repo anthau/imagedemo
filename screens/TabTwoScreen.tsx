@@ -3,24 +3,16 @@ import { StyleSheet, Button,FlatList,Image } from 'react-native';
 
 import EditScreenInfo from '../components/EditScreenInfo';
 import { Text, View } from '../components/Themed';
-
-
-
-
-
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 const Tab = createBottomTabNavigator();
 
 export default function TabTwoScreen(props) {
-    /* 2. Get the param */
-    
     const { route } = props;
-    const url = props.route.params.user;
+    const url = "props.route.params.user";
   
-   
     return (
         <View style={styles.container}>
-            <Text style={styles.title}>Tab Two63</Text>
+       
 
             <Image
                 source={{
@@ -31,7 +23,7 @@ export default function TabTwoScreen(props) {
                     },
                     body: 'image'
                 }}
-                style={{ width: '70%', height: '70%' }}
+                style={{ width: '80%', height: '80%' }}
             />
     
             <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
