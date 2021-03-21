@@ -3,6 +3,7 @@ import { StyleSheet, Button,FlatList,Image } from 'react-native';
 
 import EditScreenInfo from '../components/EditScreenInfo';
 import { Text, View } from '../components/Themed';
+import Dots from 'react-native-dots-pagination';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 const Tab = createBottomTabNavigator();
 
