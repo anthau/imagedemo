@@ -42,6 +42,7 @@ const data3 = [
     }]
 
 const renderItem = ({ item }) => (
+
     <Image
         source={{
             uri: item.url,
@@ -51,18 +52,16 @@ const renderItem = ({ item }) => (
             },
             body: 'image'
         }}
-        style={{ width: 100, height: 100 }}
-    />
+        style={{ width: 100, height: 110 , margin :  50}}
+        />
+ 
 );
-
 
 
 const CarouselCardItem = ({ item, index }) => {
 
     return (
-        <View key={index}>
-
-     
+        <View key={index} style={{ width: 500, height: 410, margin: 50 }}>
             <FlatList
                 data={item}
                 renderItem={renderItem}
@@ -94,7 +93,7 @@ export default function TabOneScreen(props) {
             'https://jsonplaceholder.typicode.com/photos',
         ).then(function (response) {
   
-            setData(chunk(response.data,10));
+            setData(chunk(response.data.splice(0, 50),10));
 
         });
 
@@ -107,9 +106,8 @@ export default function TabOneScreen(props) {
     if (data1.length !== undefined)
         return (
             <View style={s.container}>
-
-             
                 <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
+
                 <ScrollView
                     horizontal={true}
                 >
@@ -127,15 +125,14 @@ export default function TabOneScreen(props) {
                         inactiveDotOpacity={0.4}
                         inactiveDotScale={0.6}
                         tappableDots={true}
-     
+                        onSnapToItem={(index) => setIndex(index)}
                     />
                 </ScrollView>
 
-                <Text style={styles.title}>Image Browser</Text>
+                <Text style={styles.title}>Image Browser2</Text>
                 <Carousel
                     layout="default"
-                    layoutCardOffset={2}
-                            carouselRef={isCarousel}
+                    layoutCardOffset={2} 
                     data={data1}
                     ref={isCarousel}
                     renderItem={CarouselCardItem}
@@ -153,7 +150,7 @@ export default function TabOneScreen(props) {
         );
 
     return (
-        <Animated.View><Text>8oading</Text>
+        <Animated.View><Text>Loading</Text>
         </Animated.View>
 
     );
