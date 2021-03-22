@@ -52,7 +52,7 @@ const renderItem = ({ item }) => (
             },
             body: 'image'
         }}
-        style={{ width: 100, height: 110 , margin :  50}}
+        style={{ width: 50, height: 50 , margin :  5}}
         />
  
 );
@@ -76,10 +76,10 @@ const CarouselCardItem = ({ item, index }) => {
 
 
 export default function TabOneScreen(props) {
-
     const [data1, setData] = useState({});
     const [pagenumber, setpage] = useState(6);
     const [index, setIndex] = React.useState(0)
+  
     const isCarousel = React.useRef(null)
     const scrollX = React.useRef(new Animated.Value(6)).current;
     let scrollOffset = React.useRef(new Animated.Value(10)).current;
@@ -108,12 +108,27 @@ export default function TabOneScreen(props) {
             <View style={s.container}>
                 <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
 
+
+                <Text style={styles.title}>Image Browser2</Text>
+                <Carousel
+                    layout="default"
+                    layoutCardOffset={2} 
+                    data={data1}
+                    ref={isCarousel}
+                    renderItem={CarouselCardItem}
+                    sliderWidth={300}
+                    sliderHeigth={300}
+                    itemWidth={300}
+                    onSnapToItem={(index) => setIndex(index)}
+                    useScrollView={true}
+                />
+
                 <ScrollView
                     horizontal={true}
                 >
                     <Pagination
                         dotsLength={data1.length}
-                        activeDotIndex={3}
+                        activeDotIndex={index}
                         carouselRef={isCarousel}
                         dotStyle={{
                             width: 30,
@@ -129,23 +144,6 @@ export default function TabOneScreen(props) {
                     />
                 </ScrollView>
 
-                <Text style={styles.title}>Image Browser2</Text>
-                <Carousel
-                    layout="default"
-                    layoutCardOffset={2} 
-                    data={data1}
-                    ref={isCarousel}
-                    renderItem={CarouselCardItem}
-                    sliderWidth={300}
-                    sliderHeigth={300}
-                    itemWidth={300}
-                    onSnapToItem={(index) => setIndex(index)}
-                    useScrollView={true}
-                />
-          
-      
-                <Text></Text>
-  
             </View>
         );
 
@@ -175,7 +173,7 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
     },
     separator: {
-        marginVertical: 30,
+
         height: 1,
         width: '80%',
     },
