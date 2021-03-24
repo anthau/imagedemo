@@ -5,16 +5,18 @@ import EditScreenInfo from '../components/EditScreenInfo';
 import { Text, View } from '../components/Themed';
 import Dots from 'react-native-dots-pagination';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { TouchableHighlight } from 'react-native-gesture-handler';
 const Tab = createBottomTabNavigator();
 
 export default function TabTwoScreen(props) {
     const { route } = props;
     const url = props.route.params.user;
+    alert(props.route.params.user)
   
     return (
         <View style={styles.container}>
-       
 
+     
             <Image
                 source={{
                     uri: url,
@@ -25,9 +27,9 @@ export default function TabTwoScreen(props) {
                     body: 'image'
                 }}
                 style={{ width: '80%', height: '80%' }}
-            />
+        />
     
-            <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
+         
             <Button
                 title="Go to Details"
                 onPress={() => props.navigation.navigate('TabOne')}
