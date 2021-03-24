@@ -87,7 +87,7 @@ export default function TabOneScreen(props) {
         )
     }
 
-    const tappara="tappara"
+   
     const [data1, setData] = useState({});
     const [pagenumber, setpage] = useState(6);
     const [index, setIndex] = React.useState(0)
@@ -137,7 +137,7 @@ export default function TabOneScreen(props) {
                     itemWidth={300}
                     onSnapToItem={(index) => setIndex(index)}
                     useScrollView={true}
-                    extradata={ tappara}
+                    
                 />
 
                 <ScrollView
