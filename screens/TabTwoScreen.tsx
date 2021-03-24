@@ -11,8 +11,7 @@ const Tab = createBottomTabNavigator();
 export default function TabTwoScreen(props) {
     const { route } = props;
     const url = props.route.params.user;
-    alert(props.route.params.user)
-  
+
     return (
         <View style={styles.container}>
 
@@ -31,11 +30,11 @@ export default function TabTwoScreen(props) {
     
          
             <Button
-                title="Go to Details"
+                title="Go back"
                 onPress={() => props.navigation.navigate('TabOne')}
             />
             
-            <EditScreenInfo path="/screens/TabTwoScreen.tsx" />
+  
         </View>
     );
 }

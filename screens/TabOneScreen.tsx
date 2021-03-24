@@ -119,7 +119,7 @@ export default function TabOneScreen(props) {
         return (
             <View style={s.container}>
                 <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
-                <Text style={styles.title}>Image Browser12</Text>
+                <Text style={styles.title}>Image Browser</Text>
                 <Carousel
                     style={{
                         textAlign: 'center'
