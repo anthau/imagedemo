@@ -24,23 +24,28 @@ const chunk = require('chunk')
 
 const axios = require('axios');
 const sfetch = require('sync-fetch')
+interface navigate1 {
+    navigate?: (string,objects) => void;
+}
+interface propsurl {
+    url?: string
+    navigation?: object
+    imageurl?: string
+}
 
-
-
-
-
-
-export default function TabOneScreen(props) {
+export default function TabOneScreen(props: propsurl) {
     let navi = props.navigation;
-    function ImageElement(props) {
-        const { routes } = props;
+
+  
+    
+    function ImageElement(props: propsurl) {
+        let url: string = String(props.url);
+
         return (
             <TouchableHighlight onPress={() => {
-
                 navi.navigate('TabTwo', {
-
                     screen: 'TabTwoScreen',
-                    params: { user: props.url }
+                    params: { user:  url}
                 })
 
             }}>
@@ -60,28 +65,25 @@ export default function TabOneScreen(props) {
     }
 
 
-    const renderItem = (props) => (
-        
-      
-    < ImageElement imageurl={props.item.thumbnailUrl} url={props.item.url} />
+    const renderItem = ({ item}) => (
+
+         <ImageElement imageurl={item.thumbnailUrl} url={item.url} />
 
     );
 
 
-    const CarouselCardItem = (props) => {
-
+    const CarouselCardItem = ({ item }) => {
         return (
             <View style={{
-                width: 800, height: 410, margin: 50, justifyContent: 'center'
+                width: 800, height: 410, justifyContent: 'center'
             }}>
                 <FlatList
-                    data={props.item}
+                    data={item}
                     renderItem={renderItem}
                     keyExtractor={item => item.id}
                     numColumns={2}
                     contentContainerStyle={{ flexGrow: 1, justifyContent: 'center', margin: 100 }}
                 />
-
 
             </View>
         )
@@ -89,12 +91,8 @@ export default function TabOneScreen(props) {
 
    
     const [data1, setData] = useState({});
-    const [pagenumber, setpage] = useState(6);
     const [index, setIndex] = React.useState(0)
-
     const isCarousel = React.useRef(null)
-    const scrollX = React.useRef(new Animated.Value(6)).current;
-    let scrollOffset = React.useRef(new Animated.Value(10)).current;
 
     const count = async (state = 0, action) => {
         return { value: action.type }
@@ -104,9 +102,7 @@ export default function TabOneScreen(props) {
                 axios(
                     'https://jsonplaceholder.typicode.com/photos',
                 ).then(function (response) {
-
                     setData(chunk(response.data.splice(0, 50), 10));
-
                 });
 
     }, []);
@@ -114,7 +110,6 @@ export default function TabOneScreen(props) {
 
 
     let store = createStore(count);
-
     if (data1.length !== undefined)
         return (
             <View style={s.container}>
@@ -137,7 +132,7 @@ export default function TabOneScreen(props) {
                     itemWidth={300}
                     onSnapToItem={(index) => setIndex(index)}
                     useScrollView={true}
-                    
+             
                 />
 
                 <ScrollView
@@ -173,7 +168,8 @@ export default function TabOneScreen(props) {
 
 const s = StyleSheet.create({
                 container: {
-                flex: 1,
+        flex: 1,
+        backgroundColor : '#f0f',
         textAlign: 'center' // <-- the magic
         // backgroundColor:"grey",//<-- use with "dotThemeLight"
     },
@@ -182,7 +178,7 @@ const s = StyleSheet.create({
 const styles = StyleSheet.create({
                 container: {
                 flex: 1,
-        backgroundColor: '#ddd',
+        backgroundColor: '#f0f',
         alignItems: 'center',
         justifyContent: 'center',
     },

@@ -23,7 +23,7 @@ export default function BottomTabNavigator() {
                 name="TabOne"
                 component={TabOneNavigator}
                 options={{
-                    tabBarIcon: ({ color }) => <TabBarIcon name="home-outline" color={color} />,
+                    tabBarIcon: ({ color }) => <></>,
                     title: ''
                 }}
 
@@ -35,7 +35,7 @@ export default function BottomTabNavigator() {
                 component={TabTwoNavigator}
                 options={{
                     tabBarIcon: ({ color }) => <></>,
-                    title:'',
+                    title:''
                 }}
             />
             

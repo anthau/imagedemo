@@ -1,21 +1,11 @@
 import * as React from 'react';
 import { StyleSheet, Button,FlatList,Image } from 'react-native';
+import { View } from '../components/Themed';
 
-import EditScreenInfo from '../components/EditScreenInfo';
-import { Text, View } from '../components/Themed';
-import Dots from 'react-native-dots-pagination';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { TouchableHighlight } from 'react-native-gesture-handler';
-const Tab = createBottomTabNavigator();
-
-export default function TabTwoScreen(props) {
-    const { route } = props;
-    const url = props.route.params.user;
-
+export default function TabTwoScreen({ route,navigation }) {
+    const url: string = route.params.user;
     return (
         <View style={styles.container}>
-
-     
             <Image
                 source={{
                     uri: url,
@@ -26,15 +16,11 @@ export default function TabTwoScreen(props) {
                     body: 'image'
                 }}
                 style={{ width: '80%', height: '80%' }}
-        />
-    
-         
+        />         
             <Button
                 title="Go back"
-                onPress={() => props.navigation.navigate('TabOne')}
-            />
-            
-  
+                onPress={() => navigation.navigate('TabOne')}
+            />  
         </View>
     );
 }
